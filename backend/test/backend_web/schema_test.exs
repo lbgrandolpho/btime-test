@@ -50,12 +50,11 @@ defmodule BackendWeb.SchemaTest do
       }
       |> Repo.insert!()
 
-    attachment =
-      %Attachment{
-        url: "http://example.com/file1",
-        task_id: task.id
-      }
-      |> Repo.insert!()
+    %Attachment{
+      url: "http://example.com/file1",
+      task_id: task.id
+    }
+    |> Repo.insert!()
 
     response = Absinthe.run(@list_query, BackendWeb.Schema)
 
@@ -77,12 +76,11 @@ defmodule BackendWeb.SchemaTest do
       }
       |> Repo.insert!()
 
-    attachment =
-      %Attachment{
-        url: "http://example.com/file1",
-        task_id: task.id
-      }
-      |> Repo.insert!()
+    %Attachment{
+      url: "http://example.com/file1",
+      task_id: task.id
+    }
+    |> Repo.insert!()
 
     response = Absinthe.run(@get_query, BackendWeb.Schema, variables: %{"id" => task.id})
 

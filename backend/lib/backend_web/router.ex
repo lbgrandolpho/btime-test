@@ -10,5 +10,7 @@ defmodule BackendWeb.Router do
 
     forward("/graphql", Absinthe.Plug, schema: BackendWeb.Schema)
     forward("/graphiql", Absinthe.Plug.GraphiQL, schema: BackendWeb.Schema)
+
+    get("/healthcheck", BackendWeb.Controller, :index)
   end
 end
