@@ -2,6 +2,20 @@
 
 Este projeto consiste em uma API GraphQL desenvolvida em Elixir/Phoenix e um frontend em React para gerenciamento de tarefas.
 
+# Executando o projeto
+
+O projeto está completamente dockerizado, então para executá-lo basta ter o Docker >= 2.0 instalado e executar o comando:
+```sh
+docker compose up --wait
+```
+
+Similarmente, para executar os testes do backend é utilizado docker:
+```sh
+docker compose run --entrypoint "mix test" --rm api
+```
+
+Abaixo estão as instruções para executar o projeto sem o Docker, caso desejado.
+
 ## Backend (Elixir/Phoenix)
 
 ### Pré-requisitos
@@ -14,31 +28,31 @@ Este projeto consiste em uma API GraphQL desenvolvida em Elixir/Phoenix e um fro
 ### Configuração do Ambiente
 
 1. Clone o repositório:
-```bash
+```sh
 git clone https://github.com/lbgrandolpho/btime-test
 cd btime-test
 ```
 
 2. Inicie o banco de dados PostgreSQL via Docker:
-```bash
+```sh
 cd backend
 docker compose up db -d
 ```
 
 3. Ainda dentro da pasta `backend`, configure o banco de dados:
-```bash
+```sh
 mix deps.get
 mix ecto.create
 mix ecto.migrate
 ```
 
 4. Popule o banco de dados com dados de exemplo:
-```bash
+```sh
 mix run priv/repo/seeds.exs
 ```
 
 5. Inicie o servidor:
-```bash
+```sh
 mix phx.server
 ```
 
@@ -132,13 +146,13 @@ query {
 ### Configuração do Ambiente
 
 1. Instalar dependências:
-```bash
+```sh
 cd frontend
 npm install
 ```
 
 2. Iniciar o servidor de desenvolvimento:
-```bash
+```sh
 npm start
 ```
 
@@ -182,23 +196,3 @@ frontend/
   - Local de execução
 - Modal com detalhes da tarefa e arquivos anexos
 - Paginação para controle de carga de dados
-
-## Desenvolvimento
-
-### Considerações sobre CORS
-
-O backend está configurado para aceitar requisições do frontend em desenvolvimento (localhost:3000). Se necessário, ajuste as configurações de CORS no arquivo `backend/lib/backend_web/endpoint.ex`.
-
-### Ambiente de Teste
-
-Para executar os testes do backend:
-```bash
-cd backend
-mix test
-```
-
-Para o frontend:
-```bash
-cd frontend
-npm test
-```
