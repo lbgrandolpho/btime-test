@@ -2,6 +2,8 @@ defmodule BackendWeb.Endpoint do
   use Phoenix.Endpoint, otp_app: :backend
   use Absinthe.Phoenix.Endpoint
 
+  plug(CORSPlug, origin: ["http://localhost:3000"])
+
   socket("/socket", BackendWeb.UserSocket)
 
   plug(Plug.Logger)

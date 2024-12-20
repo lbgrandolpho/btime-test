@@ -34,30 +34,35 @@ defmodule Backend.Service.TaskService do
   end
 
   defp filter_by_name(query, nil), do: query
+  defp filter_by_name(query, ""), do: query
 
   defp filter_by_name(query, name) do
-    from(t in query, where: ilike(t.name, ^"%#{name}%"))
+    from(t in query, where: t.name == ^name)
   end
 
   defp filter_by_description(query, nil), do: query
+  defp filter_by_description(query, ""), do: query
 
   defp filter_by_description(query, description) do
     from(t in query, where: ilike(t.description, ^"%#{description}%"))
   end
 
   defp filter_by_execution_date(query, nil), do: query
+  defp filter_by_execution_date(query, ""), do: query
 
   defp filter_by_execution_date(query, execution_date) do
     from(t in query, where: t.execution_date == ^execution_date)
   end
 
   defp filter_by_priority(query, nil), do: query
+  defp filter_by_priority(query, ""), do: query
 
   defp filter_by_priority(query, priority) do
     from(t in query, where: t.priority == ^priority)
   end
 
   defp filter_by_location(query, nil), do: query
+  defp filter_by_location(query, ""), do: query
 
   defp filter_by_location(query, location) do
     from(t in query, where: ilike(t.location, ^"%#{location}%"))
