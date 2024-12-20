@@ -4,5 +4,5 @@ config :backend, Backend.Repo,
   username: "postgres",
   password: "postgres",
   database: "backend_test",
-  hostname: "localhost",
+  hostname: "db",
   pool: Ecto.Adapters.SQL.Sandbox

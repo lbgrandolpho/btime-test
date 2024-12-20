@@ -4,7 +4,6 @@ config :backend,
   ecto_repos: [Backend.Repo]
 
 config :backend, BackendWeb.Endpoint,
-  url: [host: "localhost"],
   http: [
     ip: {0, 0, 0, 0},
     port: 4000
